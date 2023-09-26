@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+@media screen and (min-width:999px){/*Desktop*/
+    h4{
+        padding: 5px 30px;
+        color: #fff;
+        display: block;
+        letter-spacing: 2px;
+    }
+    .container {
+        display: flex;
+        flex-direction: column; /* Alinha os elementos em uma coluna */
+        align-items: center; /* Centraliza horizontalmente */
+        background-color: black; /* Fundo preto */
+        color: white; /* Cor do texto branco */
+        padding: 20px; /* Espaçamento interno */
+    }
+    .header {
+        text-align: center; /* Centraliza o texto do h3 */
+    }
+    .content {
+        display: flex;
+        align-items: center; /* Centraliza verticalmente */
+        gap: 20px; /* Espaço entre a imagem e o h4 */
+    }
+}
