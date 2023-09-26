@@ -1,167 +1,204 @@
-*{
+/* Reset de estilos e configuração de fonte */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:Arial, Helvetica, sans-serif;
 }
-body{
+
+/* Definição da fonte padrão */
+body {
+    font-family: Arial, Helvetica, sans-serif;
     background-color: black;
-    overflow-X: hidden;
+    overflow-x: hidden;
 }
-section{
+
+/* Estilos da seção */
+section {
     background-color: #fff;
-    padding: 50px;
+    padding: 30px; /* Reduzido para telas menores */
 }
-img{
-    width: 100vh;
-    position: center;
-    align-items: center;
-}
-section > img{
-    width: 400px;
+
+/* Estilos da imagem */
+img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse seu contêiner */
     display: block;
     margin: auto;
 }
-h3{
-    padding: 15px 5px;
-}
-h3 > a{
 
+/* Estilos do título h3 */
+h3 {
+    padding: 15px 0; /* Reduzido o preenchimento vertical */
+}
+
+h3 > a {
     color: #ffffff;
     text-decoration: none;
 }
-h4{
+
+/* Estilos do título h4 */
+h4 {
     color: #fff;
     display: none;
 }
-nav{
+
+/* Estilos da barra de navegação */
+nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Ajusta o espaçamento na barra de navegação */
     align-items: center;
 }
-header{
+
+/* Estilos do cabeçalho */
+header {
     width: 100%;
     padding: 10px 4%;
     transition: 0.5s;
     position: fixed;
     top: 0;
     left: 0;
+    background-color: #020000a2; /* Fundo do cabeçalho ajustado para melhor legibilidade */
 }
-header ul{
+
+/* Estilos da lista de navegação */
+header ul {
     list-style-type: none;
     display: flex;
 }
-header ul li{
+
+header ul li {
     letter-spacing: 2px;
-    margin-left: 32px;
+    margin-left: 20px; /* Reduzido o espaçamento para telas menores */
 }
-header ul li a{
+
+header ul li a {
     color: #D4D5B8;
     text-decoration: none;
+    position: relative; /* Para o estilo do link após o hover */
 }
-header ul li a::after{
+
+header ul li a::after {
     content: " ";
     width: 0%;
     height: 2px;
     background-color: #fd3300;
     position: absolute;
-    bottom: 0;
+    bottom: -4px; /* Ajustado para melhor posicionamento após o hover */
     left: 0;
     transition: 0.4s ease-in-out;
 }
-header ul li>a:hover{
+
+header ul li > a:hover {
     color: #ffffff;
-
 }
-header ul li>a:hover::after{
+
+header ul li > a:hover::after {
     width: 100%;
-
 }
-.mobile-menu{
+
+/* Estilos do menu móvel (hamburguer) */
+.mobile-menu {
     cursor: pointer;
     display: none;
 }
-.mobile-menu div{
+
+.mobile-menu div {
     width: 32px;
     height: 2px;
     background: #fff;
     margin: 8px;
     transition: 0.3s;
 }
-header.rolagem{
+
+/* Estilos do cabeçalho após a rolagem */
+header.rolagem {
     background-color: #020000a2;
     padding: 5px 4%;
 }
-header.rolagem a{
+
+header.rolagem a {
     color: rgb(255, 255, 255);
 }
-#logo{ 
+
+/* Estilos do logotipo */
+#logo {
     width: 80px;
     height: 80px;
 }
-.banner{
+
+/* Estilos da seção de banner */
+.banner {
     height: 100vh;
     background-image: url(../imagens/senna-capacete.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center; /* Centraliza o texto no banner */
 }
-.banner h1{
-    font-size: 4em;
+
+.banner h1 {
+    font-size: 3em; /* Reduzido o tamanho da fonte para telas menores */
     color: #D4D5B8;
 }
-.banner h1 span{
+
+.banner h1 span {
     color: #fd3300;
 }
-@media (max-width: 999px){
+
+/* Estilos do menu móvel (aparece em telas menores) */
+@media (max-width: 999px) {
     .nav-list {
         position: absolute;
-        top: 14.3vh;
+        top: 100%; /* Ajustado para não cobrir o cabeçalho */
         right: 0;
-        width: 50vh;
-        height: 92vh;
+        width: 40%;
         background-color: #020000a2;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         transform: translateX(100%);
         transition: transform 0.3s ease-in;
+        z-index: 1; /* Garante que o menu móvel esteja na parte superior */
     }
-    .nav-list li{
+
+    .nav-list.active {
+        transform: translateX(0);
+    }
+
+    .nav-list li {
+        padding: 20%;
         margin-left: 0;
         opacity: 0;
+        animation: navLinkFade 0.5s ease forwards; /* Animação para links */
     }
-    .mobile-menu{
+
+    .mobile-menu {
         display: block;
     }
-}
-.nav-list.active {
-    transform: translateX(0);
+
+    .mobile-menu.active .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px); /* Melhora o ícone do menu móvel */
+    }
+
+    .mobile-menu.active .line2 {
+        opacity: 0;
+    }
+
+    .mobile-menu.active .line3 {
+        transform: rotate(45deg) translate(-5px, -6px); /* Melhora o ícone do menu móvel */
+    }
 }
 
+/* Animação para links do menu móvel */
 @keyframes navLinkFade {
     from {
         opacity: 0;
-        transform: translateX(50px);
+        transform: translateX(10px);
     }
     to {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-.mobile-menu.active .line1{
-    transform: rotate(-45deg) translate(-8px, 8px);
-}
-
-.mobile-menu.active .line2{
-    opacity: 0;
-}
-
-.mobile-menu.active .line3{
-    transform: rotate(45deg) translate(-5px, -7px);
 }
